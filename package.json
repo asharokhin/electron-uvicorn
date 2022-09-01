@@ -1,0 +1,43 @@
+{
+  "name": "electron-uvicorn",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "package": "node package_python.js && npm run -s package-electron && npm run -s package-cleanup",
+    "package-electron": "electron-builder --publish=never",
+    "package-cleanup": "rm -rf build && rm -rf run_app.spec && rm -rf dist-python"
+  },
+  "build": {
+    "appId": "com.electron-uvicorn.my-app",
+    "productName": "ElectronUvicorn",
+    "asar": false,
+    "asarUnpack": [
+      "**/*.node"
+    ],
+    "mac": {
+      "category": "public.app-category.utilities"
+    },
+    "files": [
+      "node_modules/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "dist-python/",
+        "to": "app/dist-python",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ]
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "electron": "^13.6.0",
+    "electron-builder": "^22.11.7"
+  }
+}
