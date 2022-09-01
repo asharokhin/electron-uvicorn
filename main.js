@@ -81,10 +81,11 @@ const createMainWindow = () => {
   });
 
   // Load the index page
-  mainWindow.loadURL("http://localhost:5000/");
+  mainWindow.loadURL("http://localhost:8000/");
   mainWindow.webContents.on("did-fail-load", () => {
-    setTimeout(() => mainWindow.loadURL("http://localhost:5000/"), 1000);
+    setTimeout(() => mainWindow.loadURL("http://localhost:8000/"), 1000);
   })
+  //mainWindow.loadFile("./frontend/index.html");
 
   // Open the DevTools.
   //mainWindow.webContents.openDevTools();
